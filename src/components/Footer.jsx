@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-   <footer className="fixed bottom-0 left-0 w-full bg-neutral-primary-soft border border-default">
+   <footer className="bottom-0 left-0 w-full bg-neutral-primary-soft border border-default">
       <div className="max-w-screen-xl p-4 md:flex md:justify-between">
         <span className="text-sm text-body sm:text-center">
           © 2023 Flowbite™. All Rights Reserved.

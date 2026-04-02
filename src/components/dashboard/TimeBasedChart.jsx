@@ -17,7 +17,7 @@ const TimeBasedChart = () => {
   ];
 
   return (
-    <div>
+    <div className="flex justify-center items-center">
       <LineChart width={500} height={300} data={data}>
         <CartesianGrid stroke="#ccc" />
         <XAxis dataKey="date" />

@@ -17,13 +17,15 @@ const CategoryChart = () => {
     ];
 
     return (
-        <BarChart width={500} height={300} data={data}>
+        <div className="flex justify-center items-center">
+            <BarChart width={500} height={300} data={data}>
             <CartesianGrid stroke="#ccc" />
             <XAxis dataKey="category" />
             <YAxis />
             <Tooltip />
             <Bar dataKey="amount" fill="#82ca9d" />
         </BarChart>
+        </div>
     );
 };
 
