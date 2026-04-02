@@ -9,14 +9,16 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Layout>
           <Routes>
             <Route path='/' element={<Dashboard />} />
             <Route path='/' element={<Dashboard />} />
           </Routes>
         </Layout>
-      </BrowserRouter>
+      </BrowserRouter> */}
+
+      <p>Hello</p>
     </>
   )
 }
