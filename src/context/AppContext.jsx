@@ -15,7 +15,7 @@ export const AppProvider = ({ children }) => {
     return transactionsData
   });
 
-  const [role, setRole] = useState("viewer");
+  const [role, setRole] = useState("admin");
   const [filters, setFilters] = useState({
     search: "",
     category: "",

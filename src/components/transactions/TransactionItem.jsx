@@ -4,7 +4,7 @@ import { AppContext } from "../../context/AppContext";
 const TransactionItem = ({ transaction }) => {
   const { transactions, setTransactions, role } = useContext(AppContext);
 
-  // 🔹 Delete
+  // Delete
   const handleDelete = () => {
     const updated = transactions.filter((t) => t.id !== transaction.id);
     setTransactions(updated);

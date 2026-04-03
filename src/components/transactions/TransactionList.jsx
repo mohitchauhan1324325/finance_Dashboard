@@ -10,4 +10,4 @@ const TransactionList = ({ transactions }) => {
   );
 };
 
-export default TransactionItem;
+export default TransactionList;
