@@ -12,8 +12,13 @@ const Dashboard = () => {
       <div className="text-center space-y-10">
 
         <div>
-          <button onClick={() => navigate("/transaction")}>Transaction Section</button>
-          <button onClick={() => navigate("/insights")}>Insights Section</button>
+          <button
+          className="border-2 m-2 rounded-md"
+           onClick={() => navigate("/transaction")}>Transaction Section</button>
+
+          <button
+          className="border-2 m-2 rounded-md"
+          onClick={() => navigate("/insights")}>Insights Section</button>
         </div>
 
         <div>

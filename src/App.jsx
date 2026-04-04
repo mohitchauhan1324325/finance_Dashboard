@@ -1,16 +1,18 @@
-import { useState } from 'react'
+import { useContext } from 'react'
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Layout from "./components/layout/Layout.jsx"
 import Dashboard from './pages/Dashboard.jsx'
 import Transaction from './pages/Transactions.jsx'
 import Insights from './pages/Insights.jsx'
+import { AppContext } from './context/AppContext.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { darkMode } = useContext(AppContext);
 
   return (
-    <>
+    <div className={darkMode ? "dark" : ""}>
+      <div className="min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white">
       <BrowserRouter>
         <Layout>
           <Routes>
@@ -20,7 +22,8 @@ function App() {
           </Routes> 
         </Layout>
       </BrowserRouter>
-    </>
+      </div>
+    </div>
   )
 }
 

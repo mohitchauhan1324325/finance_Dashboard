@@ -16,6 +16,7 @@ export const AppProvider = ({ children }) => {
   });
 
   const [role, setRole] = useState("viewer");
+  const [darkMode, setDarkMode] = useState(false);
   const [filters, setFilters] = useState({
     search: "",
     category: "",
@@ -34,7 +35,9 @@ export const AppProvider = ({ children }) => {
         role,
         setRole,
         filters,
-        setFilters
+        setFilters,
+        darkMode,
+        setDarkMode
       }}
     >
       {children}
