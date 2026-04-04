@@ -13,6 +13,7 @@ const Dashboard = () => {
 
         <div>
           <button onClick={() => navigate("/transaction")}>Transaction Section</button>
+          <button onClick={() => navigate("/insights")}>Insights Section</button>
         </div>
 
         <div>

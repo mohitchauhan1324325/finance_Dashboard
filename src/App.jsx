@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Layout from "./components/layout/Layout.jsx"
 import Dashboard from './pages/Dashboard.jsx'
 import Transaction from './pages/Transactions.jsx'
+import Insights from './pages/Insights.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -15,7 +16,8 @@ function App() {
           <Routes>
             <Route path='/' element={<Dashboard />} />
             <Route path='/transaction' element={<Transaction />} />
-          </Routes>
+            <Route path='/insights' element={<Insights />} />
+          </Routes> 
         </Layout>
       </BrowserRouter>
     </>
