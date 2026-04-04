@@ -6,6 +6,10 @@ const TransactionItem = ({ transaction }) => {
 
   // Delete
   const handleDelete = () => {
+
+    const confirm = window.confirm("Are you sure to delete this transaction details ?");
+    if(!confirm) return;
+
     const updated = transactions.filter((t) => t.id !== transaction.id);
     setTransactions(updated);
   };
@@ -13,13 +17,11 @@ const TransactionItem = ({ transaction }) => {
   return (
     <div className="flex justify-between items-center p-3 border rounded shadow-sm">
 
-      {/* Left */}
       <div>
         <p className="text-sm text-gray-500">{transaction.date}</p>
         <p className="font-semibold">{transaction.category}</p>
       </div>
-
-      {/* Right */}
+    
       <div className="text-right">
         <p
           className={`font-bold ${

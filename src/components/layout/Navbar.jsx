@@ -1,6 +1,6 @@
 const Navbar = () => {
   return (
-    <nav className="bg-neutral-primary top-0 z-20 start-0 border-b border-default">
+    <nav className="bg-neutral-primary top-0 z-20 start-0 border-b border-default mb-4">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         
         <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
@@ -43,7 +43,7 @@ const Navbar = () => {
             
             <li>
               <a
-                href="#"
+                href="/"
                 className="block py-2 px-3 text-black bg-brand rounded md:bg-transparent md:text-fg-brand md:p-0"
               >
                 Home

@@ -33,12 +33,14 @@ const AddTransaction = () => {
         placeholder="Amount"
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
+        required
       />
 
       <input
         placeholder="Category"
         value={category}
         onChange={(e) => setCategory(e.target.value)}
+        required
       />
 
       <select onChange={(e) => setType(e.target.value)}>

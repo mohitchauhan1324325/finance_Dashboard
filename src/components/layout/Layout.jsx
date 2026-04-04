@@ -1,3 +1,4 @@
+import RoleSwitcher from "../role/RoleSwitcher.jsx"
 import Footer from "./Footer.jsx"
 import Navbar from "./Navbar.jsx"
 
@@ -7,6 +8,7 @@ const Layout = ({ children }) => {
             <Navbar />
 
             <main>
+                <RoleSwitcher />
                 {children}
             </main>
         
