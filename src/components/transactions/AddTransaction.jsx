@@ -21,7 +21,6 @@ const AddTransaction = () => {
 
     setTransactions([...transactions, newTransaction]);
 
-    // reset form
     setAmount("");
     setCategory("");
     setType("expense");
