@@ -10,7 +10,8 @@ const SummaryCard = () => {
     <div className='flex md: justify-between'>
       
       <div>
-        Total Balance : {balance}
+        <p>Total balance :</p>
+        <p>{balance}</p>
       </div>
       <div>
         Total Income : {income}

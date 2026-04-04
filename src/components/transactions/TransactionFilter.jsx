@@ -10,7 +10,6 @@ const TransactionFilter = ({
     
       <div className="flex flex-wrap gap-3">
 
-        {/* Search */}
         <input
           type="text"
           placeholder="Search category..."
@@ -19,7 +18,6 @@ const TransactionFilter = ({
           onChange={(e) => setSearch(e.target.value)}
         />
 
-        {/* Filter */}
         <select
           className="border p-2 rounded"
           value={type}
@@ -30,7 +28,6 @@ const TransactionFilter = ({
           <option value="expense">Expense</option>
         </select>
 
-        {/* Sort */}
         <select
           className="border p-2 rounded"
           value={sortBy}

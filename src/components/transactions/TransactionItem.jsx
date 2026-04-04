@@ -2,25 +2,32 @@ import { useContext } from "react";
 import { AppContext } from "../../context/AppContext";
 
 const TransactionItem = ({ transaction }) => {
-  const { transactions, setTransactions, role } = useContext(AppContext);
+  const { deleteTransaction, role } = useContext(AppContext);
 
-  const handleDelete = () => {
+  const handleDelete = (id) => {
+    if (!id) {
+      console.error("Invalid ID:", id);
+      return;
+    }
 
-    const confirm = window.confirm("Are you sure to delete this transaction details ?");
-    if(!confirm) return;
+    const isConfirmed = window.confirm("Are you sure you want to delete?");
+    if (!isConfirmed) return;
 
-    const updated = transactions.filter((t) => t.id !== transaction.id);
-    setTransactions(updated);
+    deleteTransaction(id);
   };
 
-  return (
-    <div className="flex justify-between items-center p-3 border rounded shadow-sm">
+  if (!transaction) return null;
 
-      <div>
+  return (
+    <div className="flex justify-between items-center p-3 border rounded shadow-sm bg-white dark:bg-gray-800">
+
+     <div>
         <p className="text-sm text-gray-500">{transaction.date}</p>
-        <p className="font-semibold">{transaction.category}</p>
+        <p className="font-semibold text-black dark:text-white">
+          {transaction.category}
+        </p>
       </div>
-    
+
       <div className="text-right">
         <p
           className={`font-bold ${
@@ -32,12 +39,12 @@ const TransactionItem = ({ transaction }) => {
           ₹{transaction.amount}
         </p>
 
-        <p className="text-xs">{transaction.type}</p>
+        <p className="text-xs text-gray-500">{transaction.type}</p>
 
         {role === "admin" && (
           <button
-            onClick={handleDelete}
-            className="text-red-500 text-xs mt-1"
+            onClick={() => handleDelete(transaction.id)}
+            className="text-red-500 text-xs mt-1 hover:underline"
           >
             Delete
           </button>

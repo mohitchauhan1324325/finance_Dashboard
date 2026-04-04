@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { AppContext } from "../../context/AppContext";
 
 const AddTransaction = () => {
-  const { transactions, setTransactions } = useContext(AppContext);
+  const { addTransaction } = useContext(AppContext);
 
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("");
@@ -19,7 +19,7 @@ const AddTransaction = () => {
       type
     };
 
-    setTransactions([...transactions, newTransaction]);
+    addTransaction (newTransaction);
 
     setAmount("");
     setCategory("");
