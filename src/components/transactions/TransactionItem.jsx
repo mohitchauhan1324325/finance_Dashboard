@@ -4,7 +4,6 @@ import { AppContext } from "../../context/AppContext";
 const TransactionItem = ({ transaction }) => {
   const { transactions, setTransactions, role } = useContext(AppContext);
 
-  // Delete
   const handleDelete = () => {
 
     const confirm = window.confirm("Are you sure to delete this transaction details ?");
@@ -35,7 +34,6 @@ const TransactionItem = ({ transaction }) => {
 
         <p className="text-xs">{transaction.type}</p>
 
-        {/* Admin Actions */}
         {role === "admin" && (
           <button
             onClick={handleDelete}

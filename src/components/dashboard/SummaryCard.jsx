@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 const SummaryCard = () => {
 
@@ -22,4 +22,4 @@ const SummaryCard = () => {
   )
 }
 
-export default SummaryCard
+export default SummaryCard;

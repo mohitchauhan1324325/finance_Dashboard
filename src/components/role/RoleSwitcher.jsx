@@ -14,7 +14,7 @@ const RoleSwitcher = () => {
         <option value="viewer">Viewer</option>
         <option value="admin">Admin</option>
     </select>
-  )
-}
+  );
+};
 
-export default RoleSwitcher
+export default RoleSwitcher;

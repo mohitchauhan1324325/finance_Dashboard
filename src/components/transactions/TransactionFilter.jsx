@@ -1,5 +1,3 @@
-import React from 'react'
-
 const TransactionFilter = ({
   search,
   setSearch,
@@ -43,7 +41,7 @@ const TransactionFilter = ({
         </select>
 
       </div>
-  )
-}
+  );
+};
 
-export default TransactionFilter
+export default TransactionFilter;
