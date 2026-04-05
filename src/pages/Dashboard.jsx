@@ -45,7 +45,8 @@ const Dashboard = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="bg-white dark:bg-gray-800 p-4 rounded-2xl shadow"
+          style={{ minHeight: "320px" }}
+          className="bg-white dark:bg-gray-800 p-4 rounded-2xl shadow flex flex-col"
         >
           <SummaryCard />
         </motion.div>
@@ -56,7 +57,8 @@ const Dashboard = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.4 }}
-            className="bg-white dark:bg-gray-800 p-4 rounded-2xl shadow"
+            style={{ minHeight: "320px" }}
+            className="bg-white dark:bg-gray-800 p-4 rounded-2xl shadow flex flex-col"
           >
             <TimeBasedChart />
           </motion.div>
@@ -65,7 +67,8 @@ const Dashboard = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.4 }}
-            className="bg-white dark:bg-gray-800 p-4 rounded-2xl shadow"
+            style={{ minHeight: "320px" }}
+            className="bg-white dark:bg-gray-800 p-4 rounded-2xl shadow flex flex-col"
           >
             <CategoryChart />
           </motion.div>

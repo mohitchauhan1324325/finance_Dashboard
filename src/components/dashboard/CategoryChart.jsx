@@ -8,10 +8,15 @@ import {
   ResponsiveContainer
 } from "recharts";
 import { AppContext } from "../../context/AppContext";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
 const CategoryChart = () => {
   const { transactions } = useContext(AppContext);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const categoryData = Object.values(
     transactions.reduce((acc, curr) => {
@@ -28,24 +33,26 @@ const CategoryChart = () => {
 
   return (
     <div className="w-full h-[300px]">
-      <ResponsiveContainer width="100%" height="100%">
-        <BarChart data={categoryData}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="category" tick={{ fontSize: 12 }} />
-          <YAxis tick={{ fontSize: 12 }} />
-          <Tooltip
-            contentStyle={{
-              borderRadius: "10px",
-              border: "none",
-            }}
-          />
-          <Bar
-            dataKey="amount"
-            fill="#22c55e"
-            radius={[8, 8, 0, 0]}
-          />
-        </BarChart>
-      </ResponsiveContainer>
+      {categoryData.length === 0 ? (
+        <div className="flex items-center justify-center h-full text-gray-500 dark:text-gray-400">
+          No data available
+        </div>
+      ) : (
+        <ResponsiveContainer width="100%" height={300}>
+          <BarChart data={categoryData}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="category" tick={{ fontSize: 12 }} />
+            <YAxis tick={{ fontSize: 12 }} />
+            <Tooltip
+              contentStyle={{
+                borderRadius: "10px",
+                border: "none",
+              }}
+            />
+            <Bar dataKey="amount" fill="#10b981" radius={[6, 6, 0, 0]} />
+          </BarChart>
+        </ResponsiveContainer>
+      )}
     </div>
   );
 };
