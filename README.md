@@ -69,7 +69,7 @@ src/
 ├── pages/
 ├── utils/
 └── assets/
-
+```
 ---
 
 ##  Installation & Setup
