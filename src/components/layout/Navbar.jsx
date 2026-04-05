@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { AppContext } from "../../context/AppContext";
+import img from "../../assets/financeApp.jpg"
 
 const Navbar = () => {
   const { darkMode, setDarkMode } = useContext(AppContext);
@@ -12,8 +13,8 @@ const Navbar = () => {
 
         <div className="flex items-center gap-2">
           <img
-            src="https://flowbite.com/docs/images/logo.svg"
-            className="h-6"
+            src={img}
+            className="h-6 dark:bg-white"
             alt="logo"
           />
           <span className="text-lg font-semibold text-gray-900 dark:text-white">

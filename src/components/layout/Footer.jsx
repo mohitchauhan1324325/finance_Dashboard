@@ -1,3 +1,5 @@
+import img from "../../assets/financeApp.jpg"
+
 const Footer = () => {
   return (
     <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
@@ -6,8 +8,8 @@ const Footer = () => {
 
         <div className="flex items-center gap-2">
           <img
-            src="https://flowbite.com/docs/images/logo.svg"
-            className="h-6"
+            src={img}
+            className="h-6 dark: bg-white"
             alt="logo"
           />
           <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
