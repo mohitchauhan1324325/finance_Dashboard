@@ -128,16 +128,6 @@ VITE_API_URL=your_api_url_here
 
 ---
 
-##  Future Improvements
-
-* Edit transactions
-* Backend integration (Node.js + MongoDB)
-* Authentication system
-* Import CSV feature
-* Toast notifications
-
----
-
 ##  Author
 
 Mohit Chauhan
