@@ -4,7 +4,8 @@ import { transactionsData } from "../data/dummyData";
 
 export const AppContext = createContext();
 
-const useAPI = import.meta.env.VITE_USE_API === "true";
+// const useAPI = import.meta.env.VITE_USE_API === "true";
+const useAPI = false;
 const API_URL = import.meta.env.VITE_API_URL;
 
 export const AppProvider = ({ children }) => {
