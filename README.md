@@ -149,7 +149,7 @@ VITE_API_URL=http://localhost:3001/transactions
 ![Dashboard](public/screenshots/dashboard.png)
 
 ###  Transactions
-![Transactions](public/screenshots/transactions.png)
+![Transactions](public/screenshots/transaction.png)
 
 ###  Insights
 ![Insights](public/screenshots/insights.png)
