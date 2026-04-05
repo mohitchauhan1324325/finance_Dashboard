@@ -6,19 +6,34 @@ import {
   Tooltip,
   CartesianGrid
 } from "recharts";
+import { AppContext } from "../../context/AppContext";
+import { useContext } from "react";
 
 const TimeBasedChart = () => {
 
-  const data = [
-    { date: "Jan", balance: 4000 },
-    { date: "Feb", balance: 3000 },
-    { date: "Mar", balance: 2500 },
-    { date: "Apr", balance: 2000 },
-  ];
+  const { transactions } = useContext(AppContext);
+
+  const chartData = transactions
+    .sort((a, b) => new Date(a.date) - new Date(b.date))
+    .reduce((acc, curr) => {
+      const lastBalance = acc.length ? acc[acc.length - 1].balance : 0;
+
+      const newBalance =
+        curr.type === "income"
+          ? lastBalance + curr.amount
+          : lastBalance - curr.amount;
+
+      acc.push({
+        date: curr.date,
+        balance: newBalance
+      });
+
+      return acc;
+    }, []);
 
   return (
     <div className="flex justify-center items-center">
-      <LineChart width={500} height={300} data={data}>
+      <LineChart width={500} height={300} data={chartData}>
         <CartesianGrid stroke="#ccc" />
         <XAxis dataKey="date" />
         <YAxis />

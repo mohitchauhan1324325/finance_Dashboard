@@ -3,7 +3,8 @@ import { createContext, useEffect, useState } from "react";
 
 export const AppContext = createContext();
 
-const API_URL = "http://localhost:3001/transactions";
+const useAPI = import.meta.env.VITE_USE_API === "true";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const AppProvider = ({ children }) => {
 
@@ -17,38 +18,53 @@ export const AppProvider = ({ children }) => {
   });
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchTransactions = async () => {
+   useEffect(() => {
+    const loadData = async () => {
       try {
-        const res = await axios.get(API_URL);
-        setTransactions(res.data);
+        if (useAPI) {
+          const res = await axios.get(API_URL);
+          setTransactions(res.data);
+        } else {
+          const stored = localStorage.getItem("transactions");
+          setTransactions(stored ? JSON.parse(stored) : []);
+        }
       } catch (error) {
-        console.log("Error fetching:", error);
+        console.error("Error loading data:", error);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchTransactions();
+    loadData();
   }, []);
 
-  const addTransaction = async (newTransaction) => {
+   const addTransaction = async (newTransaction) => {
     try {
-      const res = await axios.post(API_URL, newTransaction);
-      setTransactions((prev) => [...prev, res.data]);
+      if (useAPI) {
+        const res = await axios.post(API_URL, newTransaction);
+        setTransactions((prev) => [...prev, res.data]);
+      } else {
+        const updated = [...transactions, { ...newTransaction, id: Date.now() }];
+        setTransactions(updated);
+        localStorage.setItem("transactions", JSON.stringify(updated));
+      }
     } catch (error) {
-      console.log("Error adding:", error);
+      console.error("Error adding:", error);
     }
   };
 
   const deleteTransaction = async (id) => {
     try {
-      await axios.delete(`${API_URL}/${id}`);
-      setTransactions((prev) =>
-        prev.filter((t) => t.id !== id)
-      );
+      if (useAPI) {
+        await axios.delete(`${API_URL}/${id}`);
+        setTransactions((prev) => prev.filter((t) => t.id !== id));
+      } else {
+        const updated = transactions.filter((t) => t.id !== id);
+        setTransactions(updated);
+        localStorage.setItem("transactions", JSON.stringify(updated));
+      }
     } catch (error) {
-      console.log("Error deleting:", error);
+      console.error("Error deleting:", error);
     }
   };
 
