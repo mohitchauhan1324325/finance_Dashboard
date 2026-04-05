@@ -64,6 +64,7 @@ A modern, responsive finance dashboard built with React that helps users track i
 │   ├───role/
 │   └───transactions/
 ├───context/
+├───data/
 ├───pages/
 └───utils/
 ```
