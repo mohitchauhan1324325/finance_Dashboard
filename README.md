@@ -76,7 +76,7 @@ src/
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/finance-dashboard.git
+git clone https://github.com/mohitchauhan1324325/finance_Dashboard.git
 ```
 
 2. Navigate to project:
