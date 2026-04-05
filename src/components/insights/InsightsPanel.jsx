@@ -1,45 +1,44 @@
-import { useContext } from "react";
-import { AppContext } from "../../context/AppContext";
+import { motion } from "framer-motion";
 import InsightCard from "./InsightCard";
-import {
-  getTopCategory,
-  getMonthlyComparison,
-  getInsightMessage
-} from "../../utils/calculations";
+
+const container = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.15 },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, scale: 0.95 },
+  show: { opacity: 1, scale: 1 },
+};
 
 const InsightsPanel = () => {
-  const { transactions } = useContext(AppContext);
-
-  const { topCategory, amount } = getTopCategory(transactions);
-
-  const { currentTotal, lastTotal } =
-    getMonthlyComparison(transactions);
-
-  const message = getInsightMessage(currentTotal, lastTotal);
-
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <motion.div
+      variants={container}
+      initial="hidden"
+      animate="show"
+      className="grid grid-cols-1 md:grid-cols-3 gap-6"
+    >
+      <motion.div variants={item}>
+        <InsightCard title="Highest Spending Category">
+          Food (₹500)
+        </InsightCard>
+      </motion.div>
 
-      <InsightCard title="Highest Spending Category">
-        <p className="text-lg font-semibold text-gray-900 dark:text-white">
-          {topCategory} (₹{amount})
-        </p>
-      </InsightCard>
+      <motion.div variants={item}>
+        <InsightCard title="Monthly Comparison">
+          Data
+        </InsightCard>
+      </motion.div>
 
-      <InsightCard title="Monthly Comparison">
-        <div className="space-y-1 text-gray-700 dark:text-gray-300">
-          <p>This Month: ₹{currentTotal}</p>
-          <p>Last Month: ₹{lastTotal}</p>
-        </div>
-      </InsightCard>
-
-      <InsightCard title="Insight">
-        <p className="text-gray-700 dark:text-gray-300">
-          {message}
-        </p>
-      </InsightCard>
-
-    </div>
+      <motion.div variants={item}>
+        <InsightCard title="Insight">
+          Message
+        </InsightCard>
+      </motion.div>
+    </motion.div>
   );
 };
 

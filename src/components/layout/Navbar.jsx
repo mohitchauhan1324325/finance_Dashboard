@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { AppContext } from "../../context/AppContext";
-import img from "../../assets/financeApp.jpg"
+import { motion } from "framer-motion";
+import img from "../../assets/financeApp.jpg";
 
 const Navbar = () => {
   const { darkMode, setDarkMode } = useContext(AppContext);
@@ -14,7 +15,7 @@ const Navbar = () => {
         <div className="flex items-center gap-2">
           <img
             src={img}
-            className="h-6 dark:bg-white"
+            className="h-6 object-contain dark:bg-white rounded"
             alt="logo"
           />
           <span className="text-lg font-semibold text-gray-900 dark:text-white">
@@ -45,8 +46,12 @@ const Navbar = () => {
       </div>
 
       {isOpen && (
-        <div className="md:hidden px-4 pb-4 flex flex-col gap-3 text-sm text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-900">
-
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
+          className="md:hidden px-4 pb-4 flex flex-col gap-3 text-sm text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-900"
+        >
           <a href="/" className="hover:text-blue-600 transition">Dashboard</a>
           <a href="/transaction" className="hover:text-blue-600 transition">Transactions</a>
           <a href="/insights" className="hover:text-blue-600 transition">Insights</a>
@@ -57,8 +62,7 @@ const Navbar = () => {
           >
             {darkMode ? "Light Mode" : "Dark Mode"}
           </button>
-
-        </div>
+        </motion.div>
       )}
 
     </nav>

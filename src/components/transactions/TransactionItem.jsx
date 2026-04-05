@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useContext } from "react";
 import { AppContext } from "../../context/AppContext";
 
@@ -6,53 +7,42 @@ const TransactionItem = ({ transaction }) => {
 
   const handleDelete = (id) => {
     if (!id) return;
-
-    const isConfirmed = window.confirm("Are you sure you want to delete?");
-    if (!isConfirmed) return;
-
+    const ok = window.confirm("Delete?");
+    if (!ok) return;
     deleteTransaction(id);
   };
 
-  if (!transaction) return null;
-
   return (
-    <div className="flex justify-between items-center px-4 py-3 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition">
-
-      <div className="flex flex-col">
+    <motion.div
+      whileHover={{ scale: 1.01 }}
+      className="flex justify-between items-center px-4 py-3 bg-white dark:bg-gray-800"
+    >
+      <div>
         <p className="text-xs text-gray-500 dark:text-gray-400">
           {transaction.date}
         </p>
-        <p className="font-medium text-gray-900 dark:text-white">
+        <p className="text-gray-900 dark:text-white font-medium">
           {transaction.category}
         </p>
       </div>
 
-      <div className="text-right flex flex-col items-end">
-        <p
-          className={`text-lg font-semibold ${
-            transaction.type === "income"
-              ? "text-green-600"
-              : "text-red-600"
-          }`}
-        >
+      <div className="text-right">
+        <p className={`font-semibold ${
+          transaction.type === "income" ? "text-green-600" : "text-red-600"
+        }`}>
           ₹{transaction.amount}
-        </p>
-
-        <p className="text-xs text-gray-500 dark:text-gray-400 capitalize">
-          {transaction.type}
         </p>
 
         {role === "admin" && (
           <button
             onClick={() => handleDelete(transaction.id)}
-            className="text-xs mt-1 text-red-500 hover:text-red-600 transition"
+            className="text-xs text-red-500"
           >
             Delete
           </button>
         )}
       </div>
-
-    </div>
+    </motion.div>
   );
 };
 

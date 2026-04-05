@@ -4,11 +4,12 @@ import SummaryCard from "../components/dashboard/SummaryCard";
 import TimeBasedChart from "../components/dashboard/TimeBasedChart";
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
+import { motion } from "framer-motion";
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const { loading } = useContext(AppContext);
-  
+
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -40,30 +41,34 @@ const Dashboard = () => {
 
       <div className="max-w-7xl mx-auto space-y-6 sm:space-y-8 text-gray-900 dark:text-white">
 
-        <div>
-          <h2 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">
-            Overview
-          </h2>
-          <div className="bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-2xl shadow">
-            <SummaryCard />
-          </div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="bg-white dark:bg-gray-800 p-4 rounded-2xl shadow"
+        >
+          <SummaryCard />
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
 
-          <div className="bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-2xl shadow">
-            <h2 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">
-              Balance Trend
-            </h2>
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4 }}
+            className="bg-white dark:bg-gray-800 p-4 rounded-2xl shadow"
+          >
             <TimeBasedChart />
-          </div>
+          </motion.div>
 
-          <div className="bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-2xl shadow">
-            <h2 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">
-              Spending Breakdown
-            </h2>
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4 }}
+            className="bg-white dark:bg-gray-800 p-4 rounded-2xl shadow"
+          >
             <CategoryChart />
-          </div>
+          </motion.div>
 
         </div>
 
