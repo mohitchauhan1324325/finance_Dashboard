@@ -97,6 +97,41 @@ npm run dev
 
 ---
 
+## 🔌 Mock API (JSON Server)
+
+This project optionally supports a mock backend using JSON Server.
+
+### Setup
+
+1. Install JSON Server:
+
+```bash
+npm install -g json-server
+```
+
+2. Create a `db.json` file:
+
+```json
+{
+  "transactions": []
+}
+```
+
+3. Run the server:
+
+```bash
+json-server --watch db.json --port 3001
+```
+
+4. Update `.env`:
+
+```env
+VITE_USE_API=true
+VITE_API_URL=http://localhost:3001/transactions
+```
+
+---
+
 ##  Environment Variables (Optional API Mode)
 
 Create a `.env` file:
@@ -110,7 +145,14 @@ VITE_API_URL=http://localhost:3001/transactions
 
 ##  Screenshots
 
-(Add screenshots here if needed)
+###  Dashboard
+![Dashboard](public/screenshots/dashboard.png)
+
+###  Transactions
+![Transactions](public/screenshots/transactions.png)
+
+###  Insights
+![Insights](public/screenshots/insights.png)
 
 ---
 
