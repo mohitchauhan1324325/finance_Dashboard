@@ -102,8 +102,8 @@ npm run dev
 Create a `.env` file:
 
 ```
-VITE_USE_API=false
-VITE_API_URL=your_api_url_here
+VITE_USE_API=true
+VITE_API_URL=http://localhost:3001/transactions
 ```
 
 ---
