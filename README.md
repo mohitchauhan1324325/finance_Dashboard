@@ -55,6 +55,7 @@ A modern, responsive finance dashboard built with React that helps users track i
 
 ##  Project Structure
 
+```
 src/
 │
 ├── components/
@@ -62,8 +63,8 @@ src/
 │   ├── transactions/
 │   ├── insights/
 │   ├── layout/
-│   ├── role/
-│   
+│   └── role/
+│
 ├── context/
 ├── pages/
 ├── utils/
@@ -82,7 +83,7 @@ git clone https://github.com/mohitchauhan1324325/finance_Dashboard.git
 2. Navigate to project:
 
 ```bash
-cd finance-dashboard
+cd finance-Dashboard
 ```
 
 3. Install dependencies:
