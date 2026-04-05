@@ -56,19 +56,16 @@ A modern, responsive finance dashboard built with React that helps users track i
 ##  Project Structure
 
 ```
-src/
-│
-├── components/
-│   ├── dashboard/
-│   ├── transactions/
-│   ├── insights/
-│   ├── layout/
-│   └── role/
-│
-├── context/
-├── pages/
-├── utils/
-└── assets/
+├───assets/
+├───components/
+│   ├───dashboard/
+│   ├───insights/
+│   ├───layout/
+│   ├───role/
+│   └───transactions/
+├───context/
+├───pages/
+└───utils/
 ```
 ---
 
