@@ -1,5 +1,12 @@
 import { motion } from "framer-motion";
+import { useContext } from "react";
+import { AppContext } from "../../context/AppContext";
 import InsightCard from "./InsightCard";
+import {
+  getTopCategory,
+  getMonthlyComparison,
+  getInsightMessage
+} from "../../utils/calculations";
 
 const container = {
   hidden: {},
@@ -14,6 +21,12 @@ const item = {
 };
 
 const InsightsPanel = () => {
+  const { transactions } = useContext(AppContext);
+
+  const { topCategory, amount } = getTopCategory(transactions);
+  const { currentTotal, lastTotal } = getMonthlyComparison(transactions);
+  const message = getInsightMessage(currentTotal, lastTotal);
+
   return (
     <motion.div
       variants={container}
@@ -21,23 +34,28 @@ const InsightsPanel = () => {
       animate="show"
       className="grid grid-cols-1 md:grid-cols-3 gap-6"
     >
+
       <motion.div variants={item}>
         <InsightCard title="Highest Spending Category">
-          Food (₹500)
+          {topCategory} (₹{amount})
         </InsightCard>
       </motion.div>
 
       <motion.div variants={item}>
         <InsightCard title="Monthly Comparison">
-          Data
+          <div>
+            <p>This Month: ₹{currentTotal}</p>
+            <p>Last Month: ₹{lastTotal}</p>
+          </div>
         </InsightCard>
       </motion.div>
 
       <motion.div variants={item}>
         <InsightCard title="Insight">
-          Message
+          {message}
         </InsightCard>
       </motion.div>
+
     </motion.div>
   );
 };
