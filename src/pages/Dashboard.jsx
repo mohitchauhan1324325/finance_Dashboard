@@ -2,9 +2,20 @@ import { useNavigate } from "react-router-dom";
 import CategoryChart from "../components/dashboard/CategoryChart";
 import SummaryCard from "../components/dashboard/SummaryCard";
 import TimeBasedChart from "../components/dashboard/TimeBasedChart";
+import { useContext } from "react";
+import { AppContext } from "../context/AppContext";
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const { loading } = useContext(AppContext);
+  
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="animate-spin h-10 w-10 border-4 border-blue-500 rounded-full"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 px-3 py-4 sm:px-4 sm:py-6 md:px-8">
