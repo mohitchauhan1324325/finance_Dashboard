@@ -2,7 +2,7 @@ import TransactionItem from "./TransactionItem";
 
 const TransactionList = ({ transactions }) => {
   return (
-    <div className="space-y-2">
+    <div className="divide-y divide-gray-200 dark:divide-gray-700 rounded-xl overflow-hidden">
       {transactions.map((t) => (
         <TransactionItem key={t.id} transaction={t} />
       ))}

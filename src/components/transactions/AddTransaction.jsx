@@ -19,7 +19,7 @@ const AddTransaction = () => {
       type
     };
 
-    addTransaction (newTransaction);
+    addTransaction(newTransaction);
 
     setAmount("");
     setCategory("");
@@ -27,12 +27,14 @@ const AddTransaction = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-4 gap-4">
+
       <input
         placeholder="Amount"
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
         required
+        className="px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
 
       <input
@@ -40,14 +42,25 @@ const AddTransaction = () => {
         value={category}
         onChange={(e) => setCategory(e.target.value)}
         required
+        className="px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
 
-      <select onChange={(e) => setType(e.target.value)}>
+      <select
+        value={type}
+        onChange={(e) => setType(e.target.value)}
+        className="px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+      >
         <option value="expense">Expense</option>
         <option value="income">Income</option>
       </select>
 
-      <button type="submit">Add</button>
+      <button
+        type="submit"
+        className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+      >
+        Add Transaction
+      </button>
+
     </form>
   );
 };

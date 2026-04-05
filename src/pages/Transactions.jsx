@@ -7,12 +7,10 @@ import TransactionFilter from "../components/transactions/TransactionFilter";
 const Transactions = () => {
   const { transactions, role } = useContext(AppContext);
 
-  // UI state
   const [search, setSearch] = useState("");
   const [type, setType] = useState("");
   const [sortBy, setSortBy] = useState("date");
 
-  //Filtering
   const filtered = transactions.filter((t) => {
     const matchSearch = t.category
       .toLowerCase()
@@ -23,7 +21,6 @@ const Transactions = () => {
     return matchSearch && matchType;
   });
 
-  //Sorting
   const sorted = [...filtered].sort((a, b) => {
     if (sortBy === "amount") {
       return b.amount - a.amount;
@@ -33,32 +30,40 @@ const Transactions = () => {
   });
 
   return (
-    <div className="p-4 space-y-4">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-4 md:p-8">
 
-      {/* Title */}
-      <h1 className="text-2xl font-bold">Transactions</h1>
+      <div className="max-w-6xl mx-auto space-y-6 text-gray-900 dark:text-white">
 
-      <TransactionFilter
-        search={search}
-        setSearch={setSearch}
-        type={type}
-        setType={setType}
-        sortBy={sortBy}
-        setSortBy={setSortBy}
-      />
+        <h1 className="text-3xl font-semibold">Transactions</h1>
 
-      {/* Admin Only Form */}
-      {role === "admin" && (
-        <AddTransaction />
-      )}
+        <div className="bg-white dark:bg-gray-800 p-4 rounded-2xl shadow">
+          <TransactionFilter
+            search={search}
+            setSearch={setSearch}
+            type={type}
+            setType={setType}
+            sortBy={sortBy}
+            setSortBy={setSortBy}
+          />
+        </div>
 
-      {/* Empty State */}
-      {sorted.length === 0 ? (
-        <p className="text-gray-500">No transactions found</p>
-      ) : (
-        <TransactionList transactions={sorted} />
-      )}
+        {role === "admin" && (
+          <div className="bg-white dark:bg-gray-800 p-4 rounded-2xl shadow">
+            <AddTransaction />
+          </div>
+        )}
 
+        {sorted.length === 0 ? (
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow text-center text-gray-500 dark:text-gray-300">
+            No transactions found
+          </div>
+        ) : (
+          <div className="bg-white dark:bg-gray-800 p-4 rounded-2xl shadow">
+            <TransactionList transactions={sorted} />
+          </div>
+        )}
+
+      </div>
     </div>
   );
 };

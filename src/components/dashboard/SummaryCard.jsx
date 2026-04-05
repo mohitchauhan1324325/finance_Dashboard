@@ -18,26 +18,26 @@ const SummaryCard = () => {
   const balance = income - expenses;
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-      <div className="p-4 rounded shadow bg-white dark:bg-gray-800">
-        <p className="text-gray-500">Total Balance</p>
-        <h2 className="text-xl font-bold text-black dark:text-white">
-          ₹{balance}
-        </h2>
+      {/* Balance */}
+      <div className="p-6 rounded-2xl shadow-md bg-gradient-to-r from-blue-500 to-indigo-500 text-white hover:scale-[1.02] transition">
+        <p className="text-sm opacity-80">Total Balance</p>
+        <h2 className="text-2xl font-bold mt-2">₹{balance}</h2>
       </div>
 
-
-      <div className="p-4 rounded shadow bg-green-100 dark:bg-green-900">
-        <p>Total Income</p>
-        <h2 className="text-xl font-bold text-green-600">
+      {/* Income */}
+      <div className="p-6 rounded-2xl shadow-md bg-white border border-gray-100 hover:shadow-lg transition">
+        <p className="text-sm text-gray-500">Total Income</p>
+        <h2 className="text-2xl font-bold text-green-600 mt-2">
           ₹{income}
         </h2>
       </div>
 
-      <div className="p-4 rounded shadow bg-red-100 dark:bg-red-900">
-        <p>Total Expenses</p>
-        <h2 className="text-xl font-bold text-red-600">
+      {/* Expenses */}
+      <div className="p-6 rounded-2xl shadow-md bg-white border border-gray-100 hover:shadow-lg transition">
+        <p className="text-sm text-gray-500">Total Expenses</p>
+        <h2 className="text-2xl font-bold text-red-600 mt-2">
           ₹{expenses}
         </h2>
       </div>

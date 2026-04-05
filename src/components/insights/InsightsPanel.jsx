@@ -18,21 +18,25 @@ const InsightsPanel = () => {
   const message = getInsightMessage(currentTotal, lastTotal);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
       <InsightCard title="Highest Spending Category">
-        {topCategory} (₹{amount})
+        <p className="text-lg font-semibold text-gray-900 dark:text-white">
+          {topCategory} (₹{amount})
+        </p>
       </InsightCard>
 
       <InsightCard title="Monthly Comparison">
-        <div>
+        <div className="space-y-1 text-gray-700 dark:text-gray-300">
           <p>This Month: ₹{currentTotal}</p>
           <p>Last Month: ₹{lastTotal}</p>
         </div>
       </InsightCard>
 
       <InsightCard title="Insight">
-        {message}
+        <p className="text-gray-700 dark:text-gray-300">
+          {message}
+        </p>
       </InsightCard>
 
     </div>

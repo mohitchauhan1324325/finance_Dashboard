@@ -10,15 +10,21 @@ export const AppProvider = ({ children }) => {
 
   const [transactions, setTransactions] = useState([]);
   const [role, setRole] = useState("viewer");
-  const [darkMode, setDarkMode] = useState(false);
+
+  const [darkMode, setDarkMode] = useState(() => {
+    const stored = localStorage.getItem("darkMode");
+    return stored ? JSON.parse(stored) : false;
+  });
+
   const [filters, setFilters] = useState({
     search: "",
     category: "",
     type: ""
   });
+
   const [loading, setLoading] = useState(true);
 
-   useEffect(() => {
+  useEffect(() => {
     const loadData = async () => {
       try {
         if (useAPI) {
@@ -38,7 +44,17 @@ export const AppProvider = ({ children }) => {
     loadData();
   }, []);
 
-   const addTransaction = async (newTransaction) => {
+  useEffect(() => {
+    localStorage.setItem("darkMode", JSON.stringify(darkMode));
+
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [darkMode]);
+
+  const addTransaction = async (newTransaction) => {
     try {
       if (useAPI) {
         const res = await axios.post(API_URL, newTransaction);

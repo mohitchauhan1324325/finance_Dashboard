@@ -1,107 +1,67 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AppContext } from "../../context/AppContext";
 
 const Navbar = () => {
   const { darkMode, setDarkMode } = useContext(AppContext);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-neutral-primary top-0 z-20 start-0 border-b border-default mb-4">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <nav className="sticky top-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
 
-        <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 py-3 flex items-center justify-between">
+
+        <div className="flex items-center gap-2">
           <img
             src="https://flowbite.com/docs/images/logo.svg"
-            className="h-7"
-            alt="Flowbite Logo"
+            className="h-6"
+            alt="logo"
           />
-          <span className="self-center text-xl text-heading font-semibold whitespace-nowrap">
+          <span className="text-lg font-semibold text-gray-900 dark:text-white">
             Finance Dashboard
           </span>
-        </a>
+        </div>
 
         <button
-          data-collapse-toggle="navbar-default"
-          type="button"
-          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-body rounded-base md:hidden hover:bg-neutral-secondary-soft hover:text-heading focus:outline-none focus:ring-2 focus:ring-neutral-tertiary"
-          aria-controls="navbar-default"
-          aria-expanded="false"
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white"
         >
-          <span className="sr-only">Open main menu</span>
-
-          <svg
-            className="w-6 h-6"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeWidth="2"
-              d="M5 7h14M5 12h14M5 17h14"
-            />
-          </svg>
+          ☰
         </button>
 
-        <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-          <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-default rounded-base bg-neutral-secondary-soft md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-neutral-primary">
+        <div className="hidden md:flex items-center gap-6 text-sm text-gray-600 dark:text-gray-300">
+          <a href="/" className="hover:text-blue-600 transition">Dashboard</a>
+          <a href="/transaction" className="hover:text-blue-600 transition">Transactions</a>
+          <a href="/insights" className="hover:text-blue-600 transition">Insights</a>
 
-            <li>
-              <a
-                href="/"
-                className="block py-2 px-3 text-black bg-brand rounded md:bg-transparent md:text-fg-brand md:p-0"
-              >
-                Home
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0"
-              >
-                About
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0"
-              >
-                Services
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0"
-              >
-                Pricing
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0"
-              >
-                Contact
-              </a>
-            </li>
-
-          </ul>
+          <button
+            onClick={() => setDarkMode(!darkMode)}
+            className="px-3 py-1.5 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition"
+          >
+            {darkMode ? "Light" : "Dark"}
+          </button>
         </div>
 
       </div>
 
-      <button onClick={() => setDarkMode(!darkMode)}>
-        Toggle Mode
-      </button>
+      {isOpen && (
+        <div className="md:hidden px-4 pb-4 flex flex-col gap-3 text-sm text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-900">
+
+          <a href="/" className="hover:text-blue-600 transition">Dashboard</a>
+          <a href="/transaction" className="hover:text-blue-600 transition">Transactions</a>
+          <a href="/insights" className="hover:text-blue-600 transition">Insights</a>
+
+          <button
+            onClick={() => setDarkMode(!darkMode)}
+            className="mt-2 px-3 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
+          >
+            {darkMode ? "Light Mode" : "Dark Mode"}
+          </button>
+
+        </div>
+      )}
 
     </nav>
   );
 };
 
-export default Navbar;  
+export default Navbar;
