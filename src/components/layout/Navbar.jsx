@@ -32,9 +32,9 @@ const Navbar = () => {
         </button>
 
         <div className="hidden md:flex items-center gap-6 text-sm text-gray-600 dark:text-gray-300">
-          <Link href="/" className="hover:text-blue-600 transition">Dashboard</Link>
-          <Link href="/transaction" className="hover:text-blue-600 transition">Transactions</Link>
-          <Link href="/insights" className="hover:text-blue-600 transition">Insights</Link>
+          <Link to="/" className="hover:text-blue-600 transition">Dashboard</Link>
+          <Link to="/transaction" className="hover:text-blue-600 transition">Transactions</Link>
+          <Link to="/insights" className="hover:text-blue-600 transition">Insights</Link>
 
           <button
             onClick={() => setDarkMode(!darkMode)}
@@ -53,9 +53,9 @@ const Navbar = () => {
           transition={{ duration: 0.3 }}
           className="md:hidden px-4 pb-4 flex flex-col gap-3 text-sm text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-900"
         >
-          <Link href="/" className="hover:text-blue-600 transition">Dashboard</Link>
-          <Link href="/transaction" className="hover:text-blue-600 transition">Transactions</Link>
-          <Link href="/insights" className="hover:text-blue-600 transition">Insights</Link>
+          <Link to="/" className="hover:text-blue-600 transition">Dashboard</Link>
+          <Link to="/transaction" className="hover:text-blue-600 transition">Transactions</Link>
+          <Link to="/insights" className="hover:text-blue-600 transition">Insights</Link>
 
           <button
             onClick={() => setDarkMode(!darkMode)}
