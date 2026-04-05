@@ -1,19 +1,143 @@
-# React + Vite
+# Finance Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive finance dashboard built with React that helps users track income, expenses, and financial insights through interactive charts and clean UI.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+*  **Dashboard Overview**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+  * Total Balance, Income, Expenses
+  * Time-based balance trend chart
+  * Category-wise spending breakdown
 
-## Expanding the ESLint configuration
+*  **Transaction Management**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-"# finance_Dashboard" 
-"# finance_Dashboard" 
-"# finance_Dashboard" 
+  * Add and delete transactions
+  * Filter by category and type
+  * Sort by date or amount
+
+*  **Export Functionality**
+
+  * Download transactions as **CSV** or **JSON**
+
+*  **Role-Based Access Control (RBAC)**
+
+  * Admin → Add/Delete transactions
+  * Viewer → Read-only access
+
+*  **Dark Mode**
+
+  * Toggle between light and dark themes
+  * Persisted using localStorage
+
+*  **Responsive Design**
+
+  * Works smoothly on mobile, tablet, and desktop
+
+*  **Animations**
+
+  * Smooth UI transitions using Framer Motion
+
+---
+
+##  Tech Stack
+
+* React (Vite)
+* Tailwind CSS
+* Recharts (Charts)
+* Framer Motion (Animations)
+* Context API (State Management)
+* LocalStorage / API (Optional backend)
+
+---
+
+##  Project Structure
+
+src/
+│
+├── components/
+│   ├── dashboard/
+│   ├── transactions/
+│   ├── insights/
+│   ├── layout/
+│   ├── role/
+│   
+├── context/
+├── pages/
+├── utils/
+└── assets/
+
+---
+
+##  Installation & Setup
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/your-username/finance-dashboard.git
+```
+
+2. Navigate to project:
+
+```bash
+cd finance-dashboard
+```
+
+3. Install dependencies:
+
+```bash
+npm install
+```
+
+4. Run the app:
+
+```bash
+npm run dev
+```
+
+---
+
+##  Environment Variables (Optional API Mode)
+
+Create a `.env` file:
+
+```
+VITE_USE_API=false
+VITE_API_URL=your_api_url_here
+```
+
+---
+
+##  Screenshots
+
+(Add screenshots here if needed)
+
+---
+
+##  Key Learnings
+
+* State management using Context API
+* Building responsive UI with Tailwind CSS
+* Data visualization using charts
+* File export using Blob API
+* Implementing dark mode with persistence
+* Adding smooth animations using Framer Motion
+
+---
+
+##  Future Improvements
+
+* Edit transactions
+* Backend integration (Node.js + MongoDB)
+* Authentication system
+* Import CSV feature
+* Toast notifications
+
+---
+
+##  Author
+
+Mohit Chauhan
+
