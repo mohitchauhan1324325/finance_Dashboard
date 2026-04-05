@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import { transactionsData } from "../data/dummyData";
 
 export const AppContext = createContext();
 
@@ -32,7 +33,7 @@ export const AppProvider = ({ children }) => {
           setTransactions(res.data);
         } else {
           const stored = localStorage.getItem("transactions");
-          setTransactions(stored ? JSON.parse(stored) : []);
+          setTransactions(stored ? JSON.parse(stored) : transactionsData);
         }
       } catch (error) {
         console.error("Error loading data:", error);
