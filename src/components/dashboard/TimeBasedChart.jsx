@@ -8,10 +8,15 @@ import {
   ResponsiveContainer
 } from "recharts";
 import { AppContext } from "../../context/AppContext";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
 const TimeBasedChart = () => {
   const { transactions } = useContext(AppContext);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const chartData = transactions
     .sort((a, b) => new Date(a.date) - new Date(b.date))
@@ -32,34 +37,30 @@ const TimeBasedChart = () => {
     }, []);
 
   return (
-    <div className="w-full h-[300px]">
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={chartData}>
-          <CartesianGrid strokeDasharray="3 3" />
+    <div className="w-full min-h-[250px] sm:min-h-[300px]">
 
-          <XAxis
-            dataKey="date"
-            tick={{ fontSize: 12 }}
-          />
+      {!mounted ? null : chartData.length === 0 ? (
+        <div className="flex items-center justify-center h-full text-gray-500 dark:text-gray-400">
+          No data available
+        </div>
+      ) : (
+        <ResponsiveContainer width="100%" height={300}>
+          <LineChart data={chartData}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="date" />
+            <YAxis />
+            <Tooltip />
+            <Line
+              type="monotone"
+              dataKey="balance"
+              stroke="#4f46e5"
+              strokeWidth={3}
+              dot={false}
+            />
+          </LineChart>
+        </ResponsiveContainer>
+      )}
 
-          <YAxis tick={{ fontSize: 12 }} />
-
-          <Tooltip
-            contentStyle={{
-              borderRadius: "10px",
-              border: "none",
-            }}
-          />
-
-          <Line
-            type="monotone"
-            dataKey="balance"
-            stroke="#4f46e5"
-            strokeWidth={3}
-            dot={false}
-          />
-        </LineChart>
-      </ResponsiveContainer>
     </div>
   );
 };

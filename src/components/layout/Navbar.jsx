@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { AppContext } from "../../context/AppContext";
 import { motion } from "framer-motion";
 import img from "../../assets/financeApp.jpg";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const { darkMode, setDarkMode } = useContext(AppContext);

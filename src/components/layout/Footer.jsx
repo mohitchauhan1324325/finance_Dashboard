@@ -1,4 +1,5 @@
 import img from "../../assets/financeApp.jpg"
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
